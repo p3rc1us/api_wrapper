@@ -19,13 +19,7 @@ class Restful::V1::Client
     end
 
     if response.success?
-      parsed_response = JSON.parse(response.body)
-
-      if parsed_response.is_a?(Array)
-        parsed_response.map { |obj| obj.with_indifferent_access }
-      else
-        parsed_response.with_indifferent_access
-      end
+      JSON.parse(response.body).map { |obj| obj.with_indifferent_access }
    end
   end
 
