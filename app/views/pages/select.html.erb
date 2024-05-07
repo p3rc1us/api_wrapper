@@ -1,0 +1,26 @@
+<%= form_with(url: select_path, method: :get, local: true) do %>
+ <div>
+    <%= label_tag :object_id, "Enter Object ID:" %>
+    <%= text_field_tag :object_id %>
+ </div>
+ <div>
+    <%= submit_tag "Display Object" %>
+ </div>
+<% end %>
+
+<% if @object %>
+ <h1>Object: <%= @object[:name] %></h1>
+ <p>ID: <%= @object[:id] %></p>
+ <% if @object[:data] %>
+   <p>Data:</p>
+   <ul>
+     <% @object[:data].each do |key, value| %>
+       <li><%= key.humanize %>: <%= value %></li>
+     <% end %>
+   </ul>
+ <% else %>
+   <p>No additional data found.</p>
+ <% end %>
+<% else %>
+ <p>No object found.</p>
+<% end %>
