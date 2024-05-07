@@ -1,6 +1,6 @@
 class Restful::V1::Client
 
-  BASE_URL = 'https://api.restful-api.dev'.freeze
+  BASE_URL = 'https://api.restful-api.dev/'.freeze
 
   def objects
     request(
@@ -20,7 +20,7 @@ class Restful::V1::Client
 
     if response.success?
       JSON.parse(response.body).map { |obj| obj.with_indifferent_access }
-   end
+    end
   end
 
   def connection
