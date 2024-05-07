@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   get 'pages/index'
 
-  get 'pages/select', to: 'pages#select', as: 'select'
+  get 'select', to: 'pages#select', as: 'select'
 
   get 'pages/show', to: 'pages#show'
 
