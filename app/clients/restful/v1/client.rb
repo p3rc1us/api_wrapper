@@ -26,15 +26,23 @@ class Restful::V1::Client
 
   if response.success?
      begin
-       JSON.parse(response.body).with_indifferent_access
+       parsed_response = JSON.parse(response.body)
+       if parsed_response.is_a?(Array)
+         parsed_response.map { |obj| obj.with_indifferent_access }
+       elsif parsed_response.is_a?(Hash)
+         parsed_response.with_indifferent_access
+       end
      rescue JSON::ParserError => e
        Rails.logger.error "Failed to parse JSON: #{e.message}"
+       Rails.logger.error "Response body: #{response.body}"
        nil
      end
   else
      nil
   end
- end
+
+
+  end
 
   def connection
     @connection ||= Faraday.new(url: BASE_URL)
