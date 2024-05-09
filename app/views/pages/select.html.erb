@@ -1,3 +1,4 @@
+<h3>Search Object via ID</h3>
 <%= form_with(url: select_path, method: :get, local: true) do %>
  <div>
     <%= label_tag :object_id, "Enter Object ID:" %>
@@ -12,12 +13,12 @@
  <h1><%= @object[:name] %></h1>
  <p>ID: <%= @object[:id] %></p>
  <% if @object[:data] %>
-   <p>Data:</p>
-   <ul>
-     <% @object[:data].each do |key, value| %>
-       <li><%= key.humanize %>: <%= value %></li>
-     <% end %>
-   </ul>
+  <p>Data:</p>
+  <ul>
+  <% @object[:data].each do |key, value| %>
+    <li><%= key.humanize %>: <%= value %></li>
+  <% end %>
+  </ul>
  <% else %>
    <p>No additional data found.</p>
  <% end %>
