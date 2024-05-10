@@ -16,6 +16,21 @@ class Restful::V1::Client
     )
   end
 
+  def add_object(details)
+    request(
+      method: :post,
+      endpoint: "objects",
+      body: {
+        name: :name,
+        data: {
+          year: :year,
+          price: :price,
+          model: :model
+        }
+      }
+    )
+  end
+
   private
 
   def request(method:, endpoint:, headers: {}, body: {})
