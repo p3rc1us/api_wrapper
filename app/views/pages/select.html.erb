@@ -25,3 +25,30 @@
 <% else %>
  <p>No object found.</p>
 <% end %>
+<br>
+<br>
+
+
+
+<h1>Add an Object</h1>
+<%= form_with(url: add_path, method: :post, local: true) do %>
+  <div>
+    <%= label_tag :name, "Name:" %>
+    <%= text_field_tag :name %>
+  </div>
+  <div>
+    <%= label_tag :year, "Year:" %>
+    <%= text_field_tag :year %>
+  </div>
+  <div>
+    <%= label_tag :price, "Price:" %>
+    <%= text_field_tag :price %>
+  </div>
+  <div>
+    <%= label_tag :model, "Model:" %>
+    <%= text_field_tag :model %>
+  </div>
+  <div>
+    <%= submit_tag "Add Object" %>
+  </div>
+<% end %>
