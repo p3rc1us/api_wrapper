@@ -17,23 +17,31 @@ class Restful::V1::Client
   end
 
   def add_object(details)
-    request(
-      method: :post,
-      endpoint: "objects",
-      body: {
-        name: :name,
-        data: {
-          year: :year,
-          price: :price,
-          model: :model
+    data = details["data"]
+    if data.present?
+      request(
+        method: :post,
+        endpoint: "objects",
+        body: {
+          "name" => details[name],
+          "data" => {
+            "year" => data[year],
+            "price" => data[price],
+            "model" => data[model]
+          }
         }
-      }
-    )
+      )
+    else
+      Rails.logger.error "Data is missing or nil in details: #{details.inspect}"
+      nil
+    end
   end
 
   private
 
   def request(method:, endpoint:, headers: {}, body: {})
+  headers['Content-Type'] = 'application/json'
+
   response = connection.public_send(method, "#{endpoint}") do |request|
      request.headers = headers if headers.present?
      request.body = body.to_json if body.present?
