@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   get 'select', to: 'pages#select', as: 'select'
 
-  post 'add_object', to: 'pages#add', as: 'add'
+  post 'add', to: 'pages#add', as: 'add'
 
   resources :objects
 end
