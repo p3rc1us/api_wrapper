@@ -13,14 +13,12 @@ class PagesController < ApplicationController
   def add
     client = Restful::V1::Client.new
     @details = {
-      name: params[:name],
-      data: {
-        year: params[:year],
-        price: params[:price],
-        model: params[:model]
+      "name": params[:name],
+      "data": {
+        "year": params[:year],
+        "price": params[:price]
       }
     }
-    client.add_object(@details)
+    @object = client.add_object(@details)
   end
-
 end
