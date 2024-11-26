@@ -20,5 +20,7 @@ class PagesController < ApplicationController
       }
     }
     @object = client.add_object(@details)
+
+    redirect_to root_path
   end
 end

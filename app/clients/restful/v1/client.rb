@@ -5,7 +5,7 @@ class Restful::V1::Client
   def objects
     request(
       method: :get,
-      endpoint: "objects"
+      endpoint: 'objects'
     )
   end
 
