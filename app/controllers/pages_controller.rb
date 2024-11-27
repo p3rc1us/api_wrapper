@@ -1,18 +1,18 @@
 class PagesController < ApplicationController
   def index
     client = Restful::V1::Client.new
-    @objects = client.objects(1)
+    @objects = client.objects(15)
   end
 
   def download_json
     client = Restful::V1::Client.new
-    @objects = client.objects(1)
+    @objects = client.objects(15)
     send_data JSON.pretty_generate(@objects), filename: "data.json", type: "application/json"
   end
 
   def download_csv
     client = Restful::V1::Client.new
-    @objects = client.objects(1).compact
+    @objects = client.objects(15).compact
 
     return if @objects.empty?
 
@@ -27,7 +27,7 @@ class PagesController < ApplicationController
 
   def print_console
     client = Restful::V1::Client.new
-    @objects = client.objects(1)
+    @objects = client.objects(15)
     @objects.each { |object| puts object }
     redirect_to root_path, notice: "Data printed to console"
   end
