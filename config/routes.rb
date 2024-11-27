@@ -8,9 +8,11 @@ Rails.application.routes.draw do
 
   get 'pages/index'
 
-  get 'select', to: 'pages#select', as: 'select'
+  get 'download_as_json', to: 'pages#download_json'
 
-  post 'add', to: 'pages#add', as: 'add'
+  get 'download_as_csv', to: 'pages#download_csv'
+
+  get 'print_to_console', to: 'pages#print_console'
 
   resources :objects
 end

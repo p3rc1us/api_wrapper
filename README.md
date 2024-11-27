@@ -38,3 +38,10 @@ client.objects(3, :console)
 ##### Reminder:
 Look at the root folder for the `data.csv` and `data.json` files
 ![alt text](image.png)
+
+# How to start Part 2: Frontend Task
+
+##### With the same repository, we just need to transfer to another branch!(from main branch)
+```
+git checkout -b
+![alt text](image-1.png)

@@ -1,1 +1,38 @@
-<h1>Please refer to console commands in README</h1>
+<h1>Objects</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Activity</th>
+      <th>Availability</th>
+      <th>Type</th>
+      <th>Participants</th>
+      <th>Price</th>
+      <th>Accessibility</th>
+      <th>Duration</th>
+      <th>Kid Friendly</th>
+      <th>Link</th>
+      <th>Key</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @objects.each do |object| %>
+      <tr>
+        <td><%= object[:activity] %></td>
+        <td><%= object[:availability] %></td>
+        <td><%= object[:type] %></td>
+        <td><%= object[:participants] %></td>
+        <td><%= object[:price] %></td>
+        <td><%= object[:accessibility] %></td>
+        <td><%= object[:duration] %></td>
+        <td><%= object[:kidFriendly] %></td>
+        <td><%= link_to "Learn more", object[:link], target: "_blank" %></td>
+        <td><%= object[:key] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "Download as JSON", download_as_json_path %>
+<%= link_to "Download as CSV", download_as_csv_path %>
+<%= link_to "Print to Console", print_to_console_path %>
