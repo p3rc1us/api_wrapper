@@ -58,6 +58,11 @@ bin/rails s
 ## Here is the proof of downloadables
 ![alt text](image-1.png)
 
-## Note that too many request will have an error response. Mostly with the csv button. So make sure first that the homepage has Items on the table then click the buttons.
+## Note that too many request will have an error response. Mostly with the csv button.
+### this has too many requests, thats why there's nothing
+![alt text](image-2.png)
+
+
+## So make sure first that the homepage has Items on the table then click the buttons.
 
 ## Also make sure you have PostgreSQL
