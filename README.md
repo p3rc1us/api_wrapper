@@ -43,5 +43,5 @@ Look at the root folder for the `data.csv` and `data.json` files
 
 ##### With the same repository, we just need to transfer to another branch!(from main branch)
 ```
-git checkout -b
+git checkout
 ![alt text](image-1.png)
