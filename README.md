@@ -10,7 +10,7 @@ bundle install
 ```
 ##### Start 'em engines!
 ```
-cd wrapper
+cd api_wrapper
 ```
 ```
 bin/rails c
