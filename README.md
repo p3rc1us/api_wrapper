@@ -19,7 +19,22 @@ bin/rails c
 ```
 client = Restful::V1::Client.new
 ```
-##### Run it, just replace `times` with how many times you want to run it
+##### Run it, just replace `times` and `format` with how many times you want to run it and what format you wanted it.
 ```
-client.objects(times)
+client.objects(times, format)
 ```
+
+##### Example Usage:
+```
+client.objects(3, :csv)
+```
+```
+client.objects(3, :json)
+```
+```
+client.objects(3, :console)
+```
+
+##### Reminder:
+Look at the root folder for the `data.csv` and `data.json` files
+![alt text](image.png)

@@ -1,16 +1,29 @@
+require 'json'
+require 'csv'
+
 class Restful::V1::Client
   BASE_URL = 'https://bored-api.appbrewery.com/'.freeze
 
-  def objects(times)
+  def objects(times, format)
     result = []
     times.times do
       response = request(
       method: :get,
       endpoint: 'random'
     )
-    result << response if response
+      result << response if response
     end
-    result
+
+    case format
+    when :json
+      save_as_json(result)
+    when :csv
+      save_as_csv(result)
+    when :console
+      print_to_console(result)
+    else
+      puts "Please make sure it's the right format"
+    end
   end
 
   private
@@ -41,5 +54,33 @@ class Restful::V1::Client
 
   def connection
     @connection ||= Faraday.new(url: BASE_URL)
+  end
+
+  def save_as_json(data)
+    File.open("data.json", "w") do |f|
+      f.write(JSON.pretty_generate(data))
+    end
+    puts "Data saved to data.json"
+  end
+
+  def save_as_csv(data)
+    data.compact!
+
+    return if data.empty?
+
+    CSV.open("data.csv", "w") do |csv|
+      csv << data.first.keys
+      data.each do |result|
+        csv << result.values
+      end
+    end
+
+    puts 'Data saved to data.csv'
+  end
+
+  def print_to_console(data)
+    data.each do |result|
+      puts result
+    end
   end
 end
